@@ -8,7 +8,7 @@ const DatabaseConsoleInstance = new Console({
 
 let DatabaseConnection: Socket | null = null;
 let isConnected = false;
-const database = "scarware";
+const database = process.env.DATABASE_NAME ?? "defaultdb";
 
 if (!DatabaseConnection) {
   DatabaseConnection = (globalThis as any).DatabaseConnection ?? null;
@@ -58,8 +58,13 @@ export default class Database {
     return new Promise((resolve, reject) => {
       if (!DatabaseConnection) {
         const socket = new Socket();
+        const Url = process.env.DATABASE_URL ?? "localhost:4047";
+        const [host, port] = Url.split(":");
 
-        socket.connect({ host: "localhost", port: 4047 });
+        socket.connect({
+          host: host ?? "localhost",
+          port: parseInt(port) ?? 4047,
+        });
 
         socket.on("connect", () => {
           DatabaseConsoleInstance.Success("Connected to the database.");
@@ -102,7 +107,8 @@ export default class Database {
                     DatabaseConnection?.write(
                       JSON.stringify({
                         auth: {
-                          password: "ScarwareOnTop",
+                          user: process.env.DATABASE_USER ?? "",
+                          password: process.env.DATABASE_PASSWORD ?? "",
                           database,
                         },
                       })
