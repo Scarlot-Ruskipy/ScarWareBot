@@ -3,7 +3,7 @@
 Welcome to the public repository of ScarWare. This is a Discord bot primarly used within [**ScarWare**](https://discord.gg/scarware)
 
 > [!IMPORTANT]  
-> The bot uses [**OmeDB**](https://github.com/Scarlot-Ruskipy/omedb) as database, this is due to the fact it was only meant for simple stuff like sneakpeaks, etc.
+> The bot uses [**OmeDB**](https://github.com/Scarlot-Ruskipy/omedb) and may not function properly, open an issue if this is happens
 
 ## Features ✨
 
@@ -22,7 +22,7 @@ To get started with this project, follow these steps:
 
 ## Usage 📖
 
-To start the project run the command below; This will start the database without the Web-Interface.
+To start the project run the command below; This will build & start the bot
 
 ```bash
 npm run start
@@ -35,12 +35,12 @@ Make sure to update the `.env` file with your own configurations before running 
 
 ## Credits 🙏
 
-This project was created by [**Scarlot Ruskipy**](https://github.com/Scarlot-Ruskipy) and uses [**OmeDB**](https://github.com/Scarlot-Ruskipy/omedb) as Database
+This project was created by [**Scarlot Ruskipy**](https://github.com/Scarlot-Ruskipy) and uses [**OmeDB**](https://github.com/Scarlot-Ruskipy/omedb) as Database.
 
 
 ## License 📜
 
-This project is licensed under the [**MIT License**](LICENSE).
+This project is licensed under [**Scarlot's Projects Open-source License**](License.pdf)!
 
 ## Contact 📬
 
