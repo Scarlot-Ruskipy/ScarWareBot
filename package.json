@@ -1,0 +1,33 @@
+{
+  "name": "scarware",
+  "version": "1.0.0",
+  "description": "Official bot for ScarWare",
+  "main": "dist/bot.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "npm run build && node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scarlot-Ruskipy/ScarWareBot.git"
+  },
+  "keywords": [
+    "ScarWare"
+  ],
+  "author": "ScarWare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Scarlot-Ruskipy/ScarWareBot/issues"
+  },
+  "homepage": "https://github.com/Scarlot-Ruskipy/ScarWareBot#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "figures": "^6.1.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7"
+  }
+}

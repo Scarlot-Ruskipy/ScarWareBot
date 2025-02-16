@@ -1,0 +1,35 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "strict": true,
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "target": "ES2018",
+        "baseUrl": "src",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "importHelpers": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "skipDefaultLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@/*": [
+                "*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.html",
+        "src/**/*.css",
+        "src/**/*.js",
+        "src/**/*.json"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
