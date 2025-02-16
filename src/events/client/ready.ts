@@ -12,6 +12,28 @@ export default {
     );
 
     if (!Database.retrieve()) {
+      const channel = client.channels.cache.get("1312337842550210602");
+      if (channel?.isTextBased()) {
+        channel.messages
+          .fetch()
+          .then((messages) => {
+            messages.forEach((message) => {
+              setTimeout(function () {
+                message.delete().catch((error) => {
+                  Console.GetByID("BaseConsole")?.Log(
+                    `Failed to delete message: ${error}`
+                  );
+                });
+              }, 1000);
+            });
+          })
+          .catch((error) => {
+            Console.GetByID("BaseConsole")?.Log(
+              `Failed to fetch messages: ${error}`
+            );
+          });
+      }
+
       Database.connect()
         .then(() => {
           Database.ExecRaw(`
@@ -21,7 +43,7 @@ export default {
               description TEXT NOT NULL,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             );
-          `)
+          `);
         })
         .catch((error) => {});
     } else {
