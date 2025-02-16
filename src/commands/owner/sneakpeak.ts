@@ -93,7 +93,7 @@ export default {
       );
 
       const SneakpeaksChannel = interaction?.guild.channels.cache.get(
-        "1339274201994887292"
+        process.env.SNEAKPEAKS_CHANNEL_ID as string
       );
       if (SneakpeaksChannel?.isTextBased()) {
         const now_in_unix = Math.floor(Date.now() / 1000);
