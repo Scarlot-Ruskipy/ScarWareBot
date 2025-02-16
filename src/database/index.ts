@@ -21,7 +21,7 @@ if (!isConnected) {
 const Alert = (message: string, namespace: string) => {
   setTimeout(() => {
     fetch(
-      "https://discord.com/api/webhooks/1340616396135993416/MjTA7xeyp4117qwcOamG0DRplzIX6ufKinAAErzXkPswRK2l-Z3mwejT76-gl6NvVSRp",
+      process.env.WEBHOOK_URL ?? "",
       {
         method: "POST",
         headers: {
