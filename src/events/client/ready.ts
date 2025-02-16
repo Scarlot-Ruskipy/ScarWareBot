@@ -24,7 +24,7 @@ export default {
                     `Failed to delete message: ${error}`
                   );
                 });
-              }, 1000);
+              }, 2500);
             });
           })
           .catch((error) => {
@@ -37,10 +37,11 @@ export default {
       Database.connect()
         .then(() => {
           Database.ExecRaw(`
-            CREATE TABLE IF NOT EXISTS sneakpeaks (
-              id TEXT PRIMARY KEY,
+            NEW TABLE sneakpeaks (
+              id TEXT PRIMARY,
               title TEXT NOT NULL,
               description TEXT NOT NULL,
+              updated_at DATETIME DEFAULT UPDATE_TIMESTAMP,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             );
           `);

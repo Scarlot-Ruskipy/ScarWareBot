@@ -1,5 +1,5 @@
 import { ScarWareClient } from "../../typing";
-import { Events, Interaction, MessageFlags } from "discord.js";
+import { Events, GuildMemberRoleManager, Interaction, MessageFlags } from "discord.js";
 
 export default {
   name: Events.InteractionCreate,
@@ -15,11 +15,32 @@ export default {
 
     const { flags } = command;
 
-    if (flags?.owner && interaction.user.id !== process.env.DISCORD_BOT_OWNER_ID) {
+    if (
+      flags?.owner &&
+      interaction.user.id !== process.env.DISCORD_BOT_OWNER_ID
+    ) {
       return interaction.reply({
         content: "You do not have permission to run this command!",
-        flags: MessageFlags.Ephemeral
+        flags: MessageFlags.Ephemeral,
       });
+    }
+
+    if (flags?.required_roles) {
+      let hasRole = false;
+      for (const role of flags.required_roles) {
+        if ((interaction.member?.roles as GuildMemberRoleManager).cache.has(role)) {
+          hasRole = true;
+
+          break;
+        }
+      }
+
+      if (!hasRole) {
+        return interaction.reply({
+          content: "You do not have permission to run this command!",
+          flags: MessageFlags.Ephemeral,
+        });
+      }
     }
 
     try {
@@ -28,7 +49,7 @@ export default {
       console.error(error);
       interaction.reply({
         content: "There was an error while executing this command!",
-        flags: MessageFlags.Ephemeral
+        flags: MessageFlags.Ephemeral,
       });
     }
   },
